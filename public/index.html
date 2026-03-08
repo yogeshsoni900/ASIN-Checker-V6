@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Amazon ASIN Checker V6</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="app-header">
+        <div>
+          <h1>Amazon ASIN Checker V6</h1>
+          <p class="subtitle">Fast, accurate product data directly from Amazon</p>
+        </div>
+      </header>
+
+      <main class="app-main">
+        <section class="card">
+          <h2>1. Enter ASINs</h2>
+          <p class="section-help">
+            Paste one ASIN per line, or separated by commas. You can also upload a CSV/text file.
+          </p>
+          <div class="asin-input-row">
+            <textarea
+              id="asinList"
+              placeholder="B0CXXXXXXX&#10;B09XXXXXXX&#10;B0BXXXXXXX"
+            ></textarea>
+            <div class="asin-input-side">
+              <label class="file-upload">
+                <span>Upload CSV / TXT</span>
+                <input id="fileUpload" type="file" accept=".csv,.txt" />
+              </label>
+              <div id="totalAsins" class="meta-label"></div>
+              <button id="resetBtn" class="btn ghost">Reset</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="card">
+          <h2>2. Select Columns</h2>
+          <p class="section-help">
+            Choose which data points you want to fetch. More columns may take slightly longer.
+          </p>
+          <div class="select-all-row">
+            <label class="checkbox-pill checkbox-all">
+              <input type="checkbox" id="selectAllColumns" />
+              <span>Select all columns</span>
+            </label>
+          </div>
+          <div class="columns-grid" id="columnsGrid">
+            <label class="checkbox-pill">
+              <input type="checkbox" class="columnCheckbox" value="Title" />
+              <span>Title</span>
+            </label>
+            <label class="checkbox-pill">
+              <input type="checkbox" class="columnCheckbox" value="TitleLength" />
+              <span>Title Length</span>
+            </label>
+            <label class="checkbox-pill">
+              <input type="checkbox" class="columnCheckbox" value="BulletPoints" />
+              <span>Bullet Points Count</span>
+            </label>
+            <label class="checkbox-pill">
+              <input type="checkbox" class="columnCheckbox" value="Seller" />
+              <span>Sold By</span>
+            </label>
+            <label class="checkbox-pill">
+              <input type="checkbox" class="columnCheckbox" value="BestSellerRank" />
+              <span>Best Seller Rank</span>
+            </label>
+            <label class="checkbox-pill">
+              <input type="checkbox" class="columnCheckbox" value="DeliveryDate" />
+              <span>Delivery Date</span>
+            </label>
+            <label class="checkbox-pill">
+              <input type="checkbox" class="columnCheckbox" value="StarRating" />
+              <span>Star Rating</span>
+            </label>
+            <label class="checkbox-pill">
+              <input type="checkbox" class="columnCheckbox" value="Reviews" />
+              <span>Reviews</span>
+            </label>
+            <label class="checkbox-pill">
+              <input type="checkbox" class="columnCheckbox" value="Coupon" />
+              <span>Coupon</span>
+            </label>
+            <label class="checkbox-pill">
+              <input type="checkbox" class="columnCheckbox" value="FBA" />
+              <span>FBA</span>
+            </label>
+            <label class="checkbox-pill">
+              <input type="checkbox" class="columnCheckbox" value="Deal" />
+              <span>Deal</span>
+            </label>
+            <label class="checkbox-pill">
+              <input type="checkbox" class="columnCheckbox" value="Price" />
+              <span>Price</span>
+            </label>
+            <label class="checkbox-pill">
+              <input type="checkbox" class="columnCheckbox" value="Aplus" />
+              <span>A+ Content</span>
+            </label>
+            <label class="checkbox-pill">
+              <input type="checkbox" class="columnCheckbox" value="Category" />
+              <span>Main Category</span>
+            </label>
+            <label class="checkbox-pill">
+              <input type="checkbox" class="columnCheckbox" value="Images" />
+              <span>Images Count</span>
+            </label>
+            <label class="checkbox-pill">
+              <input type="checkbox" class="columnCheckbox" value="Video" />
+              <span>Video Available (Yes/No)</span>
+            </label>
+          </div>
+        </section>
+
+        <section class="card">
+          <div class="card-header-row">
+            <div>
+              <h2>3. Scan</h2>
+              <p class="section-help">
+                We scan ASINs in parallel for speed while keeping parsing rules accurate and robust.
+              </p>
+            </div>
+            <div class="actions-row">
+              <button id="checkBtn" class="btn primary">Start Scan</button>
+              <button id="downloadBtn" class="btn">Download CSV</button>
+            </div>
+          </div>
+          <div id="scanProgress" class="meta-label"></div>
+          <div class="table-wrapper">
+            <table id="resultTable">
+              <thead>
+                <tr id="tableHeadRow"></tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+
+      <footer class="app-footer">
+        <span>Made with ❤️ by Yogesh Soni · All rights reserved © 2025</span>
+      </footer>
+    </div>
+
+    <script src="main.js"></script>
+  </body>
+  </html>
+
